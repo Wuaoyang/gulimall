@@ -82,3 +82,8 @@ spring:
 2. 编写一个接口，告诉SpringCloud这个接口需要调用远程服务
 3. 声明接口中每个方法都是调用哪个远程服务的哪个请求
 4. 开启远程调用功能 @EnableFeignClients(basePackages = "xxx")
+
+# 开发整合
+1. 前端项目设置默认请求端口 lcoalhost:88/api/...
+2. 88对应后台gateway，后台gateway对应api进行断言，对应nacos-applicationName转发到对应服务进行请求（也就是说，通过gateway进行转发的服务需要注意注册到Nacos，并和gateway设置转发的服务-服务名对应）
+3. 浏览器端跨域访问会有跨域问题，跨域请求会有跨域预检Option，可统一在gateway进行跨域放行
